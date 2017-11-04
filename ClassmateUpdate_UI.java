@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;  
 
   
-public class ClassmateUpdate extends JFrame implements ActionListener {  
+public class ClassmateUpdate_UI extends JFrame implements ActionListener {  
   
     /**
 	 * 
@@ -21,7 +21,7 @@ public class ClassmateUpdate extends JFrame implements ActionListener {
     JPanel jp1, jp2,jp3,jp4,jp5,jp6,jp7,jp8 = null;  
   
     // 构造函数  
-    public ClassmateUpdate() {  
+    public ClassmateUpdate_UI() {  
         // 创建组件       
         jl1 = new JLabel("    姓名");  
         jl2=new JLabel("家庭住址");    
@@ -99,7 +99,7 @@ public class ClassmateUpdate extends JFrame implements ActionListener {
         this.setTitle("学生信息修改");  
         this.setSize(250,350);  
         this.setLocation(500, 200);  
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+       // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
         //设置可视
         this.setVisible(true);  
         this.setResizable(false);  

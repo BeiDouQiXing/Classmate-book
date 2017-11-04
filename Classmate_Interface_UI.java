@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 
  
-public class Classmate_Interface extends JFrame {
+public class Classmate_Interface_UI extends JFrame implements ActionListener {
     /**
 	 * 
 	 */
@@ -31,13 +31,14 @@ public class Classmate_Interface extends JFrame {
 	private JPanel pane = null; // 主要的JPanel，该JPanel的布局管理将被设置成CardLayout
     private JPanel p = null; // 放按钮的JPanel
     private CardLayout card = null; // CardLayout布局管理器
-    private JButton b_1 = null, b_2 = null, b_3 = null,b_4 = null,b_5=null; // 四个可直接翻转到JPanel组件的按钮
+    private JButton b_1 = null, b_2 = null, b_3 = null,b_4 = null,b_5 = null,jb_excel=null; // 四个可直接翻转到JPanel组件的按钮
     private JPanel p_1 = null, p_2 = null, p_3 = null,p_4 = null; // 要切换的四个子页面JPanel，增删改查
     //录入页面变量
     JLabel jl_address,jl_name,jl_tel,jl_wechat,jl_mail,jl_qq,jl_lan = null;  
     JTextField jtf_name,jtf_address,jtf_tel,jtf_wechat,jtf_mail,jtf_qq,jtf_lan = null;  
     JButton jb_ack_add,jb_reset_add = null;  
     JPanel jp_name, jp_address,jp_tel,jp_wechat,jp5,jp_mail,jp_lan,jp_qq = null;
+    
     //查询页面变量
     JLabel jl5,jl6 = null;
     JTextField jtf_name_query = null;
@@ -66,7 +67,7 @@ public class Classmate_Interface extends JFrame {
     JTable table2 = null;  
     JScrollPane jsp2 = null;
     ///////////////
-    public Classmate_Interface() {
+    public Classmate_Interface_UI() {
         super("同学录");
         try {
             // 将LookAndFeel设置成Windows样式
@@ -82,18 +83,20 @@ public class Classmate_Interface extends JFrame {
         b_2 = new JButton("信息删除");
         b_3 = new JButton("信息修改");
         b_4 = new JButton("信息查询");
-        b_5 = new JButton("导出Excel");
+        jb_excel = new JButton("导出Excel");
+        b_5 = new JButton("群发邮件");
         
         b_1.setMargin(new Insets(20,20,20,20));
         b_2.setMargin(new Insets(20,20,20,20));
         b_3.setMargin(new Insets(20,20,20,20));
         b_4.setMargin(new Insets(20,20,20,20));
+        jb_excel.setMargin(new Insets(20,20,20,20));
         b_5.setMargin(new Insets(20,20,20,20));
-
         p.add(b_1);
         p.add(b_2);
         p.add(b_3);
         p.add(b_4);
+        p.add(jb_excel);
         p.add(b_5);
 
         
@@ -240,7 +243,7 @@ public class Classmate_Interface extends JFrame {
         jb_alter.addActionListener(new ActionListener() { // 当在修改页面点击修改时
             public void actionPerformed(ActionEvent e) {
             	
-            		new ClassmateUpdate();
+            		new ClassmateUpdate_UI();
 		
             }
         });
@@ -291,6 +294,11 @@ public class Classmate_Interface extends JFrame {
                 card.show(pane, "p4");
             }
         });
+        b_5.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent e){
+        		new SendEmail_UI();
+        	}
+        });
         this.getContentPane().add(pane);
         this.getContentPane().add(p, BorderLayout.NORTH);
      //   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -301,6 +309,12 @@ public class Classmate_Interface extends JFrame {
     }
     
    public static void main(String[] args) {
-	new Classmate_Interface();
+	new Classmate_Interface_UI();
+}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
 }
 }
