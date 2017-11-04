@@ -44,6 +44,11 @@
 
 * 导出Excel——按钮——jb_excel
 
+### 六、群发邮件
+
+* 内容——文本框——jtf_content
+* 发送——按钮——jb_send
+
 
 
 
