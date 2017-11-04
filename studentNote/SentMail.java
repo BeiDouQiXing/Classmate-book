@@ -1,4 +1,4 @@
-package javamail;
+package studentNote;
 
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -14,20 +14,19 @@ import java.util.Properties;
 
 
 public class SentMail {
-	public void sentAll(Student[] Stu,String messageTxt){
+	public static void sentAll(Student[] Stu,String messageTxt) throws Exception{
+		Classmate_Interface_UI.init();
 		for(int i=0;i<Stu.length;i++)
 		{
-			if(Stu[i]!=null)
-			{
-				if(Stu[i].getName().equals("")||Stu[i].getName()==null||Stu[i].getName().equals("null"))
+			if(Stu[i] == null)
+        		break;
+        	if(Stu[i].getName() == null)
+        		continue;
+        	else
 				{
-					continue;
+        			sent(messageTxt,Stu[i].getMail());
 				}
-				else
-				{
-					sent(messageTxt,Stu[i].getMail());
-				}
-			}
+			
 		}
 	}
     public static void sent(String messageTxt,String mailAddress) throws Exception {

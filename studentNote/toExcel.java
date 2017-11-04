@@ -1,4 +1,4 @@
-package toExcel2;
+package studentNote;
 import java.io.File;
 import jxl.Cell;
 import jxl.NumberCell;
@@ -10,7 +10,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 public class toExcel {
 
-	public void toExcels(Student [] Stu)
+	public static void toExcels(Student [] Stu)
 	{
 		try {
 			//指定存储路径和文件名
