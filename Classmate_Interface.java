@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -30,7 +31,7 @@ public class Classmate_Interface extends JFrame {
 	private JPanel pane = null; // 主要的JPanel，该JPanel的布局管理将被设置成CardLayout
     private JPanel p = null; // 放按钮的JPanel
     private CardLayout card = null; // CardLayout布局管理器
-    private JButton b_1 = null, b_2 = null, b_3 = null,b_4 = null; // 四个可直接翻转到JPanel组件的按钮
+    private JButton b_1 = null, b_2 = null, b_3 = null,b_4 = null,b_5=null; // 四个可直接翻转到JPanel组件的按钮
     private JPanel p_1 = null, p_2 = null, p_3 = null,p_4 = null; // 要切换的四个子页面JPanel，增删改查
     //录入页面变量
     JLabel jl_address,jl_name,jl_tel,jl_wechat,jl_mail,jl_qq,jl_lan = null;  
@@ -66,7 +67,7 @@ public class Classmate_Interface extends JFrame {
     JScrollPane jsp2 = null;
     ///////////////
     public Classmate_Interface() {
-        super("数据库信息管理");
+        super("同学录");
         try {
             // 将LookAndFeel设置成Windows样式
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -81,16 +82,20 @@ public class Classmate_Interface extends JFrame {
         b_2 = new JButton("信息删除");
         b_3 = new JButton("信息修改");
         b_4 = new JButton("信息查询");
+        b_5 = new JButton("导出Excel");
         
         b_1.setMargin(new Insets(20,20,20,20));
         b_2.setMargin(new Insets(20,20,20,20));
         b_3.setMargin(new Insets(20,20,20,20));
         b_4.setMargin(new Insets(20,20,20,20));
-        
+        b_5.setMargin(new Insets(20,20,20,20));
+
         p.add(b_1);
         p.add(b_2);
         p.add(b_3);
         p.add(b_4);
+        p.add(b_5);
+
         
         p_1 = new JPanel();
         p_2 = new JPanel();
@@ -232,6 +237,13 @@ public class Classmate_Interface extends JFrame {
         jb_alter_query = new JButton("查询");
         jb_alter = new JButton("修改");
         
+        jb_alter.addActionListener(new ActionListener() { // 当在修改页面点击修改时
+            public void actionPerformed(ActionEvent e) {
+            	
+            		new ClassmateUpdate();
+		
+            }
+        });
         String[] colnames2 = { "姓名", "家庭住址", "电话", "微信","邮箱","QQ","个性语言" };
         model2 = new DefaultTableModel(colnames2, 1000); 
         table2 = new JTable(model2); 
